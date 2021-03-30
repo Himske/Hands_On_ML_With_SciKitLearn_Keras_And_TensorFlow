@@ -1,0 +1,66 @@
+1. Which Linear Regression training algorithm can you use if you have a training set with millions of features?
+
+- Stochastic Gradient Descent
+
+
+2. Suppose the features in your training set have very different scales. Which algorithms might suffer from this and how? What can be done about it?
+
+- Gradient Descent algorithms will take a long time to converge. Scale the data before training.
+
+
+3. Can Gradient Descent get stuck in a local minimum when training a Logistic Regression model?
+
+- No, because the cost function is convex.
+
+
+4. Do all Gradient Descent algorithms lead to the same model, provided you let them run long enough?
+
+- Yes, if the problem is convex and assuming the learning rate is not too high.
+- No, unless you gradually reduce the learning rate, Stochastic GD and Mini-Batch GD will produce sligthly different models.
+
+
+5. Suppose you use Batch Gradient Descent and you plot the validation error at every epoch. If you notice that the validation error consistently goes up, what is likely going on? How can you fix this?
+
+- The learning rate is too high. Reduce the learning rate if the training error also is going up, if not the model might be overfitting and you should stop training.
+
+
+6. Is it a good idea to stop Mini-Batch Gradient Descent immediately when the validation error goes up?
+
+- No, instead you should save the model at regular intervals and if it's not improving for a time you can revert to the best saved model.
+
+
+7. Which Gradient Descent algorithm (among those we discussed) will reach the vicinity of the optimal solution the fastest? Which will actually converge? How can you make the others converge as well?
+
+- Stochastic GD will be fastest, but only Batch GD will actually converge (given enough training time). Stochastic GD and Mini-Batch GD can converge by gradually reducing the learning rate.
+
+
+8. Suppose you are using a Polynomial Regression. You plot the learning curves and you notice that there's a large gap between the training error and the validation error. What is happening? What are three ways to solve this?
+
+- Your model is probably overfitting the training set. Reduce the polynominal degree, regularize the model (adding a l1 or l2 penalty), or increase the size of the training set.
+
+
+9. Suppose you are using Ridge Regression and you notice that the training error and the validation error are almost equal and fairly high. Would you say that the model suffers from a high bias or high variance? Should you increase the regularization hyperparameter alpha or reduce it?
+
+- The model is probably underfitting the training set, which means it has a high bias. Try reducing the hyperparameter alpha.
+
+
+10. Why would you use:
+
+a. Ridge Regression instead of plain Linear Regression (i.e. without any regularization)?
+
+- A model with some regularization usually performs better than a model with no regularization.
+
+
+b. Lasso instead of Ridge Regression?
+
+- It performs feature selection automaticly, which is good if you suspect that only a few features actually matter.
+
+
+c. Elastic Net instead of Lasso?
+
+- Lasso might behave erratically when several features are strongly correlated or when there are more features than training instances.
+
+
+11. Suppose you want to classify pictures as outdoor/indoor and daytime/nighttime. Should you implement two Logistic Regression classifiers or one Softmax Regression classifier?
+
+- Since these are not exclusive classes, all four combinations are possible. You should train two Logistic Regression classifiers.
